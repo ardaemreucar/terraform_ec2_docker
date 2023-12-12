@@ -1,0 +1,13 @@
+#!/bin/bash
+# Update package lists and install Docker
+sudo apt update -y
+sudo apt install -y docker.io
+
+# Start the Docker service
+sudo systemctl start docker
+
+# Add the current user to the docker group to avoid using sudo with docker commands
+sudo usermod -aG docker $USER
+
+# Run an Nginx container on port 8080
+docker run -p 8080:80 nginx
